@@ -9,7 +9,8 @@ import (
 
 	"github.com/JagdeepSingh13/go_boilerplate/internal/config"
 
-	zerologWriter "github.com/newrelic/go-agent/v3/integrations/logcontext-v2/zerologWriter"
+	// zerologWriter "github.com/newrelic/go-agent/v3/integrations/logcontext-v2/zerologWriter"
+
 	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/pkgerrors"
@@ -85,34 +86,34 @@ func NewLoggerWithService(cfg *config.ObservabilityConfig, loggerService *Logger
 
 	var writer io.Writer
 
-	// // Setup base writer
-	// if cfg.IsProduction() && cfg.Logging.Format == "json" {
-	// 	// In production, write to stdout (New Relic log forwarding will pick up logs from stdout)
-	// 	writer = os.Stdout
-	// } else {
-	// 	// Development mode - use console writer
-	// 	consoleWriter := zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: "2006-01-02 15:04:05"}
-	// 	writer = consoleWriter
-	// }
-
 	// Setup base writer
-	var baseWriter io.Writer
 	if cfg.IsProduction() && cfg.Logging.Format == "json" {
-		// In production, write to stdout
-		baseWriter = os.Stdout
-
-		// Wrap with New Relic zerologWriter for log forwarding in production
-		if loggerService != nil && loggerService.nrApp != nil {
-			nrWriter := zerologWriter.New(baseWriter, loggerService.nrApp)
-			writer = nrWriter
-		} else {
-			writer = baseWriter
-		}
+		// In production, write to stdout (New Relic log forwarding will pick up logs from stdout)
+		writer = os.Stdout
 	} else {
 		// Development mode - use console writer
 		consoleWriter := zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: "2006-01-02 15:04:05"}
 		writer = consoleWriter
 	}
+
+	// Setup base writer
+	// var baseWriter io.Writer
+	// if cfg.IsProduction() && cfg.Logging.Format == "json" {
+	// 	// In production, write to stdout
+	// 	baseWriter = os.Stdout
+
+	// 	// Wrap with New Relic zerologWriter for log forwarding in production
+	// 	if loggerService != nil && loggerService.nrApp != nil {
+	// 		nrWriter := zerologWriter.New(baseWriter, loggerService.nrApp)
+	// 		writer = nrWriter
+	// 	} else {
+	// 		writer = baseWriter
+	// 	}
+	// } else {
+	// 	// Development mode - use console writer
+	// 	consoleWriter := zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: "2006-01-02 15:04:05"}
+	// 	writer = consoleWriter
+	// }
 
 	logger := zerolog.New(writer).
 		Level(logLevel).
