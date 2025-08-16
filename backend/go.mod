@@ -4,6 +4,7 @@ go 1.24.2
 
 require (
 	github.com/go-playground/validator/v10 v10.27.0
+	github.com/hibiken/asynq v0.25.1
 	github.com/jackc/pgx-zerolog v0.0.0-20230315001418-f978528409eb
 	github.com/jackc/pgx/v5 v5.7.5
 	github.com/jackc/tern/v2 v2.3.3
@@ -19,6 +20,8 @@ require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.3.0 // indirect
 	github.com/Masterminds/sprig/v3 v3.3.0 // indirect
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/gabriel-vasile/mimetype v1.4.8 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
@@ -35,6 +38,8 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/redis/go-redis/v9 v9.7.0 // indirect
+	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spf13/cast v1.7.0 // indirect
 	golang.org/x/crypto v0.37.0 // indirect
@@ -42,7 +47,8 @@ require (
 	golang.org/x/sync v0.13.0 // indirect
 	golang.org/x/sys v0.35.0 // indirect
 	golang.org/x/text v0.24.0 // indirect
+	golang.org/x/time v0.8.0 // indirect
 	google.golang.org/genproto v0.0.0-20210602131652-f16073e35f0c // indirect
 	google.golang.org/grpc v1.65.0 // indirect
-	google.golang.org/protobuf v1.34.2 // indirect
+	google.golang.org/protobuf v1.35.2 // indirect
 )
