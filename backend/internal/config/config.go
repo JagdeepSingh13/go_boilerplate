@@ -13,7 +13,7 @@ import (
 
 type Config struct {
 	Primary       Primary              `koanf:"primary" validate:"required"`
-	Server        Server               `koanf:"server" validate:"required"`
+	Server        ServerConfig         `koanf:"server" validate:"required"`
 	Database      DatabaseConfig       `koanf:"database" validate:"required"`
 	Auth          AuthConfig           `koanf:"auth" validate:"required"`
 	Redis         RedisConfig          `koanf:"redis" validate:"required"`
@@ -25,7 +25,7 @@ type Primary struct {
 	Env string `koanf:"env" validate:"required"`
 }
 
-type Server struct {
+type ServerConfig struct {
 	Port               string   `koanf:"port" validate:"required"`
 	ReadTimeout        int      `koanf:"read_timeout" validate:"required"`
 	WriteTimeout       int      `koanf:"write_timeout" validate:"required"`
